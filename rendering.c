@@ -1,6 +1,6 @@
 //
 //  rendering.c
-//  Flappy Bird in C
+//  TicTacToe in C
 //
 //  Created by Fin Bießler on 28.01.19.
 //  Copyright © 2019 Fin Bießler. All rights reserved.
@@ -27,7 +27,7 @@ void render_x(SDL_Renderer *renderer, int row, int col, const SDL_Color *color){
     const float half_box_side = fmin(CELL_HEIGHT, CELL_WIDTH) * 0.25;
     const float center_x      = CELL_WIDTH * 0.5 + col * CELL_WIDTH;
     const float center_y      = CELL_HEIGHT * 0.5 + row * CELL_HEIGHT;
-    
+
     SDL_SetRenderDrawColor(renderer, color->r, color->g, color->b, 255);
     SDL_RenderDrawLine(renderer, center_x - half_box_side, center_y - half_box_side, center_x + half_box_side, center_y + half_box_side);
     SDL_RenderDrawLine(renderer, center_x + half_box_side, center_y - half_box_side, center_x - half_box_side, center_y + half_box_side);
@@ -37,7 +37,7 @@ void render_o(SDL_Renderer *renderer, int row, int col, const SDL_Color *color){
     const float half_box_side = fmin(CELL_HEIGHT, CELL_WIDTH) * 0.25;
     const float center_x      = CELL_WIDTH * 0.5 + col * CELL_WIDTH;
     const float center_y      = CELL_HEIGHT * 0.5 + row * CELL_HEIGHT;
-    
+
     SDL_SetRenderDrawColor(renderer, color->r, color->g, color->b, 255);
     SDL_Rect rect;
     rect.x = center_x - half_box_side;
@@ -45,8 +45,8 @@ void render_o(SDL_Renderer *renderer, int row, int col, const SDL_Color *color){
     rect.w = half_box_side*2;
     rect.h = half_box_side*2;
     SDL_RenderDrawRect(renderer, &rect);
-    
-    
+
+
 }
 
 // Function which renders the board i. e. the content of the cells
@@ -59,7 +59,7 @@ void render_board(SDL_Renderer *renderer, const int *board, const SDL_Color *pla
                         break;
                     case PLAYER_X:
                         render_x(renderer, i, j, player_x_color);
-                    
+
                 default:
                     break;
             }
@@ -93,9 +93,9 @@ void render_game(SDL_Renderer *renderer, const gamestate *game){
             case TIE_STATE:
                 render_gameover_state(renderer, game, &TIE_COLOR);
                 break;
-            
-            
-            
+
+
+
         default:
             break;
     }
